@@ -1,9 +1,6 @@
 name: Update Prayer Times
 
 on:
-  schedule:
-    - cron: "5 0 * * *"
-      timezone: "Europe/Stockholm"
   workflow_dispatch:
 
 permissions:
