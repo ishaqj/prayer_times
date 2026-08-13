@@ -1,9 +1,6 @@
 name: Prayer Times
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
-      timezone: "Europe/Stockholm"
   workflow_dispatch:
     inputs:
       mode:
