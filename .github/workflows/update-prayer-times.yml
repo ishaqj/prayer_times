@@ -1,0 +1,32 @@
+name: Update Prayer Times
+
+on:
+  schedule:
+    - cron: "5 0 * * *"
+      timezone: "Europe/Stockholm"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scrape current month
+        run: python -m src.main scrape
